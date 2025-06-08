@@ -1,0 +1,66 @@
+.maindivdotsinputdrawer {
+    position: absolute;
+    width: 278px;
+    /* border: 1px solid black; */
+    /* height: 100px; */
+    bottom: 115%;
+    padding: calc(0.25rem*2) 0;
+    border-radius: 20px;
+    /* background-color: red; */
+    background-color: white;
+    padding: 8px;
+    box-sizing: border-box;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    padding: calc(0.25rem*2) 10px;
+}
+
+.commoncssdotsinputdrawer {
+    display: flex;
+    align-items: center;
+    padding: 0 calc(0.25rem*3);
+    height: 36px;
+}
+
+
+.commoncssdotsinputdrawer:hover {
+    background-color: #F5F5F5;
+}
+
+.commonimagedotsinputdrawer {
+    width: 26px;
+    height: 26px;
+
+}
+
+.information {
+    margin-left: 10px;
+}
+
+.upperlinediv {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    margin-bottom: 2px;
+}
+
+.updateddotsinputdrawer {
+    /* border: 1px solid black; */
+    margin-left: 10px;
+    height: 19px;
+    width: 64px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    color: #fff;
+    background-color: #0285ff;
+}
+
+.lowerlinediv {
+    font-size: 13px;
+}
+
+.secondivdotsinputdrawer {
+    margin-top: 10px;
+}

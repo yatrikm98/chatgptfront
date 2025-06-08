@@ -1,0 +1,213 @@
+.formdiv {
+  position: absolute;
+  bottom: 10px;
+  margin: 0 auto;
+  left: 50%;
+  transform: translateX(-50%);
+  min-height: 100px;
+  box-sizing: border-box;
+  border-radius: 20px;
+  padding: 5px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  background-color: white;
+  overflow: visible;
+}
+
+.formdivone {
+  width: 766px;
+  overflow: visible;
+}
+
+.formdivtwo {
+  width: 766px;
+  overflow: visible;
+}
+
+
+.divform {
+  box-sizing: border-box;
+  /* position: absolute; */
+  /* bottom: 58%; */
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 200px;
+  text-decoration-color: black !important;
+  /* background-color: white; */
+  /* z-index: 20; */
+  /* border-top-right-radius: 20px; */
+  /* border-top-left-radius: 20px; */
+  white-space: pre-wrap;
+  /* ⬅️ Allows wrapping and preserves spaces */
+  word-wrap: break-word;
+  font-size: 16px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+}
+
+.divform:focus {
+  outline: none;
+}
+
+
+.divform * {
+  background-color: transparent !important;
+  color: #0d0d0d !important;
+  font-size: 16px !important;
+  }
+
+.spanInput {
+  position: absolute;
+  bottom: 85px;
+  left: 10px;
+  z-index: -1;
+}
+
+.spanInput:focus {
+  outline: none;
+}
+
+.spanInput::after {
+  content: 'Ask anything';
+  position: absolute;
+  left: 5px;
+  top: -3px;
+  width: 200px;
+  color: gray;
+  z-index: 0;
+  font-size: 20px;
+  font-weight: 200;
+}
+
+/* .input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+  font-size: 18px;
+  border: 0px;
+  height: 48px;
+}
+
+
+.input::placeholder {
+  font-size: 18px;
+}
+
+.input:focus {
+  outline: 0;
+} */
+
+
+.iconsformdiv {
+  display: flex;
+  justify-content: space-between;
+  /* position: relative; */
+  /* top: 50px; */
+  margin-top: 15px;
+}
+
+.leftsideicons {
+  display: flex;
+  gap: calc(0.25rem*2);
+}
+
+
+.leftsideicons button {
+  cursor: pointer;
+}
+
+.leftsideicons button:hover {
+  background-color: #F8F8F8;
+}
+
+.addiconform {
+  height: 36px;
+  width: 36px;
+  border-radius: 50%;
+  background-color: white;
+  border-color: #0d0d0d0d;
+  position: relative;
+  ;
+}
+
+.searchicon,
+.bulbicon {
+  display: flex;
+  align-items: center;
+  height: 34px;
+  padding: calc(0.25rem*2);
+  background-color: white;
+  border-color: #0d0d0d0d;
+  border-radius: 20px;
+}
+
+
+.searchicon span {
+  margin-left: 5px;
+  color: #5d5d5d;
+}
+
+.bulbicon span {
+  margin-left: 5px;
+  color: #5d5d5d;
+}
+
+
+
+.threedotsicon {
+  border-radius: 50%;
+  width: 36px;
+  border-color: #0d0d0d0d;
+  background-color: white;
+  position: relative;
+}
+
+
+.voiceicon {
+  width: 36px;
+  background-color: black;
+  border-radius: 50%;
+  /* border-color: black; */
+}
+
+
+.blue {
+  background-color: #daeeff !important;
+}
+
+.blue svg {
+  color: #0285FF !important;
+}
+
+.blue span {
+  color: #0285FF !important;
+}
+
+.blue:hover {
+  background-color: lightblue !important;
+}
+
+
+@media only screen and (max-width: 1050px) {
+  .formdivone {
+    width: 90%;
+    overflow: visible;
+  }
+
+
+}
+
+@media only screen and (max-width: 900px) {
+  .formdivtwo {
+    width: 95%;
+
+    overflow: visible;
+  }
+}
+
+
+@media only screen and (max-width: 500px) {
+  .formdivtwo {
+    width: 90%;
+  }
+
+}

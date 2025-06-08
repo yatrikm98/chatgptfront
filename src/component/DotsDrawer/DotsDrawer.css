@@ -1,0 +1,43 @@
+.maindivdotsdrawer {
+    position: absolute;
+    top: 120%;
+    /* border: 1px solid black; */
+    width: 120px;
+    /* height: 106px; */
+    padding: 10px;
+    box-sizing: border-box;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    border-radius: 10px;
+    background-color: white;
+    z-index: 50;
+}
+
+.maindivdotsdrawer div {
+    /* border: 1px solid black; */
+    padding: 10px;
+    font-size: 16px;
+    /* height: 49px; */
+}
+
+.maindivdotsdrawer div:hover {
+    background-color: #F5F5F5;
+}
+
+.archievediv {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+
+.delete {
+    display: flex;
+    align-items: center;
+
+    color: red;
+}
+
+.delete span {
+    margin-left: 11px;
+}

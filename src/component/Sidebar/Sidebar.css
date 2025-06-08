@@ -1,0 +1,248 @@
+.sidebarmaindiv {
+    /* border: 1px solid black; */
+    min-width: 260px;
+    height: 100vh;
+    padding: 10px;
+    background-color: #F9F9F9;
+    position: relative;
+    box-sizing: border-box;
+    transition: min-width 2s ease;
+}
+
+.iconssidebar {
+    height: 56px;
+    /* width: ; */
+    /* border: 1px solid black; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.closesidebar,.searchchats,.newchatsidebar {
+    height: 40px;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+}
+
+.closesidebar .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    top: 15%;
+    left: 110%;
+  }
+
+  .closesidebar .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent black transparent transparent;
+  }
+  .closesidebar:hover .tooltiptext {
+    visibility: visible;
+  }
+
+
+  .tooltiptext:hover {
+    background-color: black !important;
+    color: white !important;
+  }
+
+
+
+  .searchchats .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    top: 150%;
+    left: 50%;
+    margin-left: -60px;
+  }
+  
+  .searchchats .tooltiptext::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent black transparent;
+  }
+  
+  .searchchats:hover .tooltiptext {
+    visibility: visible;
+  }
+
+
+  .newchatsidebar .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    top: 150%;
+    left: 50%;
+    margin-left: -60px;
+  }
+  
+  .newchatsidebar .tooltiptext::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent black transparent;
+  }
+  
+  .newchatsidebar:hover .tooltiptext {
+    visibility: visible;
+  }
+
+
+
+.iconssidebar div {
+    display: flex;
+}
+
+.closesidebar:hover ,.searchchats:hover , .newchatsidebar:hover {
+    background-color: #E7E7E7;
+    border-radius: 10px;
+}
+
+.iconssidebar span:hover {
+    background-color: #E7E7E7;
+}
+
+
+.chatgpticondiv {
+    border: 1px solid black;
+    width: 16px;
+    height: 16px;
+    padding: 2px;
+    border-radius: 50%;
+    background-color: white;
+}
+
+
+.scrollablediv a {
+    color: black;
+    text-decoration: none;
+    display: flex;
+    margin-top: 15px;
+    align-items: center;
+    height: 36px;
+    padding: 5px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    font-size: 14px;
+}
+
+.scrollablediv a:hover {
+    background-color: #E7E7E7;
+}
+
+.scrollablediv a .chatgptdiv {
+padding-left: 10px;
+font-size: 18px;
+
+}
+
+.scrollablediv a .exporegptdiv {
+padding-left: 10px;
+font-size: 16px;
+}
+
+
+.renderdatasidebar { 
+  height: 470px;
+  overflow: auto;
+  margin-right: -10px;
+  padding-right: 10px; 
+}
+
+.renderdatasidebar::-webkit-scrollbar {
+  position: absolute;
+  right: 0px;
+  width: 8px; /* Size of the scrollbar */
+  background-color: transparent; /* Makes the track area transparent */
+}
+
+
+.renderdatasidebar::-webkit-scrollbar-thumb {
+  background-color:#e3e3e3; /* Visible scrollbar thumb */
+  border-radius: 4px;
+}
+
+.fixeddiv {
+    position: absolute;
+    bottom: 10px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    box-sizing: border-box;
+    margin: 0 auto;
+    border-radius: 10px;
+    z-index: 20;
+    background-color: #F9F9F9;
+}
+
+.fixeddiv .details{
+    margin-left: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.fixeddiv:hover {
+    background-color: #E7E7E7;
+    cursor: pointer;
+
+} 
+
+.upgradeplanicondiv {
+    border: 1px solid lightgrey;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    padding: 5px;
+    box-sizing: border-box;
+
+}
+
+
+.detailsSecondDiv {
+  font-size: 0.875rem;
+  color: #8F8F8F;
+  line-height: 1.33;
+}
+
+
+

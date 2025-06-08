@@ -1,0 +1,264 @@
+.flexbothnavbardivs {
+  display: flex;
+  justify-content: space-between;
+  /* border-bottom: 2px solid black; */
+  position: sticky;
+  top: 0px;
+  /* border: 1px solid black; */
+  width: 100%;
+  padding: 10px;
+  padding-top: 15px;
+  height: 72px;
+  box-sizing: border-box;
+  /* margin-top: 10px; */
+}
+
+.navbarfirstdiv {
+  /* border: 1px solid black; */
+  height: 56px;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  width: 200px;
+  position: fixed;
+  top: 10px;
+  box-sizing: border-box;
+}
+
+.sidebaropenfirstdiv {
+  position: static;
+  display: flex;
+  align-items: center;
+}
+
+
+.opensidebar {
+  height: 40px;
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+}
+
+.opensidebar:hover {
+  background-color: #E7E7E7;
+  border-radius: 10px;
+}
+
+
+.opensidebar .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  top: 150%;
+  left: 140%;
+  margin-left: -60px;
+}
+
+.opensidebar .tooltiptext::after {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 20%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent black transparent;
+}
+
+.opensidebar:hover .tooltiptext {
+  visibility: visible;
+}
+
+
+.chatgpticon {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 10px;
+  width: 120px;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #5d5d5d;
+  position: relative;
+}
+
+
+.chatgpticon:hover {
+  background-color: #F9F9F9;
+}
+
+
+span.newchat {
+  height: 40px;
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+}
+
+span.newchat:hover {
+  background-color: #E7E7E7;
+  border-radius: 10px;
+}
+
+
+.newchat .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  top: 150%;
+  left: 50%;
+  margin-left: -60px;
+}
+
+.newchat .tooltiptext::after {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent black transparent;
+}
+
+.newchat:hover .tooltiptext {
+  visibility: visible;
+}
+
+
+.tooltiptext:hover {
+  background-color: black !important;
+  color: white !important;
+}
+
+
+.downarrow {
+  margin-left: 5px;
+}
+
+.iconImage,
+.showimagetill770px {
+  width: 32px;
+  height: 32px;
+  font-size: 13px;
+  padding: 0;
+  cursor: pointer;
+  border: 2px solid transparent;
+  border-radius: 50%;
+}
+
+.showimagetill770px {
+  display: none;
+}
+
+.iconImage:hover {
+  border: 2px solid lightgray;
+}
+
+
+.navbarseconddiv {
+  display: flex;
+  align-items: center;
+  width: 180px;
+  justify-content: space-between;
+  position: fixed;
+  right: 10px;
+  height: 56px;
+  box-sizing: border-box;
+  top: 10px;
+  /* padding-right: 10px; */
+}
+
+
+.sidebaropenseconddiv {
+  position: static;
+  display: flex;
+  align-items: center;
+  width: 180px;
+  justify-content: space-between;
+}
+
+
+.sharebutton {
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 20px;
+  width: 90px;
+  border-color: #00000026;
+  background-color: white;
+}
+
+.sharediv {
+  display: flex;
+  align-items: center;
+  width: 60px;
+  justify-content: space-between;
+  color: #0d0d0d;
+}
+
+
+.dotsbutton {
+  width: 30px;
+  height: 40px;
+  background-color: white;
+  border: 0px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+@media only screen and (max-width: 770px) {
+
+  .modaltypediv {
+    display: block;
+  }
+
+  .navbarfirstdiv {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .newchat {
+    display: none;
+  }
+
+  .navbarseconddiv {
+    display: none;
+  }
+
+  .showimagetill770px {
+    display: block;
+  }
+
+  .sidebaropenseconddiv {
+    display: none;
+  }
+
+  .sidebaropenfirstdiv {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
+}

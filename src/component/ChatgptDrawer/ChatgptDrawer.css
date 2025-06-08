@@ -1,0 +1,92 @@
+.maindivchatgptdrawer {
+    position: absolute;
+    top: 130%;
+    left: 0px;
+    /* border: 1px solid black; */
+    width: 340px;
+    height: 137px;
+    border-radius: 20px;
+    padding: 5px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    background-color: white;
+    z-index: 50;
+
+}
+
+.commoncsschatgptdrawer {
+    /* border: 1px solid black; */
+    height: 55px;
+    padding: 5px;
+    border-radius: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    /* justify-content: space-between; */
+}
+
+
+.commoncsschatgptdrawer:hover {
+    background-color: #F5F5F5;
+}
+
+.chatgptplus,
+.chatgpttitle {
+    font-size: 16px;
+    color: black;
+    font-weight: normal;
+}
+
+.commondetails {
+    display: flex;
+    margin-left: 15px;
+    justify-content: space-between;
+    /* width: 100%; */
+    align-items: center;
+}
+
+
+.commoncsssecondtitle {
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.commoncsschatgptdrawer button {
+    width: 70px;
+    border-radius: 15px;
+    height: 30px;
+    background-color: white;
+    border-color: #00000026;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.commoncsschatgptdrawer button:hover {
+    background-color: #ECECEC;
+}
+
+.imagestardiv {
+    border: 1px solid black;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.starimage {
+    width: 15px;
+    height: 15px;
+}
+
+.tickimage {
+    width: 18px;
+    height: 18px;
+    margin-left: 60px;
+}

@@ -1,25 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.css'
+import Sidebar from './component/Sidebar/Sidebar';
+import Homepage from './component/Homepage/Homepage';
+import { useState,useEffect } from 'react';
+import { useDispatch } from 'react-redux'
+import { setCurrentPath } from './store';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+const App = () => {
+
+    const [openSidebar, setOpenSidebar] = useState(true)
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        const handler = () => {
+            // dispatch(dataToSendBackend(false))
+            dispatch(setCurrentPath(window.location.pathname))
+        }
+
+        window.addEventListener('popstate', handler)
+
+        return () => {
+            window.removeEventListener('popstate', handler)
+        }
+    }, [dispatch])
+
+    return (
+        <div className='mainappdiv'>
+            {openSidebar && <Sidebar onClose={() => setOpenSidebar(false)} />}
+            <Homepage openSidebar={openSidebar} onOpen={() => setOpenSidebar(true)} onClose={() => setOpenSidebar(false)} />
+        </div>
+    )
 }
 
 export default App;

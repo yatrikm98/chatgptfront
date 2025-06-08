@@ -1,0 +1,55 @@
+.maindivicondrawer {
+  position: absolute;
+  right: 10px;
+  top: 10%;
+  width: 280px;
+  height: 300px;
+  border: 1px solid transparent;
+  z-index: 50;
+  /* background-color: #EAEEF6; */
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  padding: 15px;
+  border-radius: 30px;
+  /* padding: 10px; */
+  box-sizing: border-box;
+  background-color: white;
+}
+
+.commoncssforicondrawer {
+  display: flex;
+  /* justify-content: ; */
+  align-items: center;
+  cursor: pointer;
+  height: 45px;
+}
+
+
+.commoncssforicondrawer:hover {
+  background-color: #F5F5F5;
+}
+
+.commonicondiv {
+  margin-right: 10px;
+}
+
+.commoniconimage {
+  width: 28px;
+  height: 28px;
+}
+
+
+@media only screen and (max-width: 500px) {
+
+  .maindivicondrawer {
+    position: fixed;
+    height: 100vh;
+    top: 60px;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100vw;
+    box-sizing: border-box;
+    /* z-index: 1; */
+  }
+
+}

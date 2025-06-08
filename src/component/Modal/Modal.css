@@ -1,0 +1,144 @@
+.mainDivPortal {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    inset: 0;
+    /* z-index: 20;  */
+}
+
+.outergraydiv {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    opacity: 0.6;
+    z-index: 10;
+}
+
+.innerDiv {
+    position: relative;
+    background-color: white;
+    width: 550px;
+    box-sizing: border-box;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 10px;
+    z-index: 20;
+}
+
+
+
+.upperpartdivmodal {
+    /* margin-top: 10px; */
+    padding: calc(0.25rem*6);
+    font-size: 15px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid lightgray;
+    height: 81px;
+}
+
+.upperpartdivmodal div {
+    font-size: 18px;
+    color: #0d0d0d;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+}
+
+.closeiconmodal{
+    font-size: 20px;
+    border-radius: 50%;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.closeiconmodal:hover {
+    background-color: lightgrey;
+}
+
+.formelements {
+    padding: calc(0.25rem*6);
+}
+
+.upperpartformelements {
+font-size: 19px;
+color: #5D5D5D;
+/* font-weight: 300; */
+margin-bottom: calc(0.25rem*6);
+}
+
+.upperpartformelements a {
+    text-decoration: underline;
+    color: #5D5D5D;
+}
+
+.inputdivmodal {
+    padding: calc(0.25rem*2);
+    border: 1px solid lightgray;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 40px;
+}
+
+
+.inputmodal {
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    height: 48px;
+    width: 324px;
+    font-size: 18px;
+    border: 0px;
+
+}
+
+.inputmodal:focus {
+    outline: 0;
+}
+
+.inputmodal::placeholder{
+    color: #8f8f8f;
+    font-size: 18px;
+}
+
+.formelements button {
+
+    border-radius: 20px;
+    background-color: black;
+    cursor: pointer;
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+    width:139px;
+    height: 50px;
+    box-sizing: border-box;
+    border-radius: 30px;
+}
+
+.formelements button:hover {
+    background-color: black;
+    color: white;
+    border-color: black;
+}
+
+.closebuttonmodaldiv {
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+
+@media only screen and (max-width: 600px) {
+    .innerDiv {
+        max-width: 98%;
+    }
+    .inputmodal {
+        width: 70%;
+    }
+  
+  }

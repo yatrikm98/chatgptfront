@@ -1,0 +1,114 @@
+.mainhomepagediv {
+  width: 100%;
+  position: relative;
+  height: 100vh;
+}
+
+.initialimage {
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+
+.modaltypediv {
+  position: absolute;
+  background-color: #f9f9f980;
+  display: none;
+  z-index: 200;
+  width: 100%;
+  height: 100vh;
+}
+
+
+
+.maindivfordatadisplaysidebarclose {
+  /* border: 1px solid black; */
+  margin-top: 72px;
+  overflow-y: auto;
+  height: 550px;
+  scroll-behavior: smooth;
+}
+
+.maindivfordatadisplaysidebaropen {
+  /* border: 1px solid black; */
+  overflow-y: auto;
+  height: 550px;
+  scroll-behavior: smooth;
+}
+
+.maindivfordatadisplaysidebaropen::-webkit-scrollbar {
+ width: 8px;
+  /* Size of the scrollbar */
+  background-color: transparent;
+  /* Makes the track area transparent */
+}
+
+.maindivfordatadisplaysidebaropen::-webkit-scrollbar-thumb {
+  background-color: #e3e3e3;
+  /* Visible scrollbar thumb */
+  border-radius: 4px;
+}
+
+.maindivfordatadisplaysidebarclose::-webkit-scrollbar-thumb {
+  background-color: #e3e3e3;
+  /* Visible scrollbar thumb */
+  border-radius: 4px;
+}
+
+.maindivfordatadisplaysidebarclose::-webkit-scrollbar {
+  width: 8px;
+  /* Size of the scrollbar */
+  background-color: transparent;
+  /* Makes the track area transparent */
+}
+
+
+
+
+.centralmaindivsidebaropen {
+  width: 766px;
+  /* border: 1px solid black; */
+  margin: 0 auto;
+  /* height: 500px; */
+  /* overflow-y: scroll; */
+
+}
+
+.centralmaindivsiebarclose {
+  width: 766px;
+  /* border: 1px solid black; */
+  margin: 0 auto;
+  /* margin-top: 72px; */
+  /* height: 500px; */
+
+}
+
+.overallrenderdatadiv {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+
+@media only screen and (max-width: 1050px) {
+  .centralmaindivsidebaropen {
+    width: 70vw;
+  }
+}
+
+@media only screen and (max-width: 950px) {
+  .centralmaindivsidebaropen {
+    width: 65vw;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .centralmaindivsiebarclose {
+    width: 95%;
+  }
+}
+
+@media only screen and (max-width: 770px) {
+  .modaltypediv {
+    display: block;
+  }
+}
