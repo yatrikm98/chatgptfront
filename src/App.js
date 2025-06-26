@@ -1,6 +1,6 @@
 import './App.css'
-import Sidebar from './component/Sidebar/Sidebar';
-import Homepage from './component/Homepage/Homepage';
+import Sidebar from './components/Sidebar/Sidebar';
+import Homepage from './components/Homepage/Homepage';
 import { useState,useEffect } from 'react';
 import { useDispatch } from 'react-redux'
 import { setCurrentPath } from './store';

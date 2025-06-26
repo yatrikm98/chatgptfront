@@ -1,6 +1,6 @@
 import ReactDOM from 'react-dom'
 import './Modal.css'
-import { Fragment, useState } from 'react'
+import {  useState } from 'react'
 import { IoCloseOutline } from "react-icons/io5";
 import { openModal } from '../../store';
 import { useDispatch } from 'react-redux';

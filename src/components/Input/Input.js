@@ -30,8 +30,6 @@ const Input = ({ openSidebar, onSubmit }) => {
     const handleKeyDown = (e) => {
         if (e.key === 'Enter') {
             if (e.shiftKey) {
-                // Allow default behavior → insert line break
-                // console.log('Allow Line break')
                 return;
             } else {
                 e.preventDefault();

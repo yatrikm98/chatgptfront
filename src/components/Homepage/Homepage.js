@@ -44,7 +44,9 @@ const Homepage = ({ openSidebar, onOpen, onClose }) => {
     const containerRef = useRef(null);
     const [conversationId, setConversationId] = useState('')
     // console.log(conversationId, 'ConversationId')
-    console.log("Home PAge compoennt re rendered")
+
+    console.log(messages, "Messages")
+    console.log('Home page is being rendered')
 
     const renderedData = messages.map((data, index) => {
         return <MessageListItem data={data} index={index} key={index} messages={messages} />
@@ -68,19 +70,18 @@ const Homepage = ({ openSidebar, onOpen, onClose }) => {
             console.log('Inside if of text input !== "')
             let conversationIdReceivedFromBackEnd;
             dispatch(dataToSendBackend(true))
+            setMessages([...messages, { question: textFromInput, answer: '' }])
             if (currentPath === '/') {
                 console.log("Inside current Path === /")
                 const { conversationId } = await createConversation(textFromInput)
                 dispatch(navigate('/' + conversationId))
                 setConversationId(conversationId)
-                setMessages([...messages, { question: textFromInput, answer: '', conversationId }])
-                console.log("Set Messages when gemini response is empty ")
                 conversationIdReceivedFromBackEnd = conversationId
                 console.log("At the end of Inside current Path === /")
             }
             dispatch(setPauseTrue())
 
-
+            console.log("Set Messages when gemini response is empty ")
             // console.log('Before Response')
             const response = await geminiResponse(textFromInput)
             // console.log(response, 'Response From Gemini')
@@ -117,6 +118,7 @@ const Homepage = ({ openSidebar, onOpen, onClose }) => {
                 if (messages.length === 1) {
 
                     const fetchConversation = async () => {
+                        console.log("Inside fatch conversation")
                         const res = await fetch(`${API_URL}/conversation/getconversation/${conversationId}`)
                         const data = await res.json()
                         // console.log(data,'One Conversation when length ===1')
