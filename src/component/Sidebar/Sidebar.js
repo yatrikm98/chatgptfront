@@ -1,21 +1,36 @@
 import { useEffect, useState, useRef } from 'react'
 import './Sidebar.css'
-
+import { createSelector } from '@reduxjs/toolkit';
 import ConversationListItem from '../ConversationListItem/ConversationListItem'
 import { useDispatch, useSelector } from 'react-redux';
 import { navigate, onClearInput, updateSidebar, dataToSendBackend } from '../../store';
 import groupConversationByDate from '../../groupConversationByDate';
 const Sidebar = ({ onClose }) => {
-
+    const API_URL = process.env.REACT_APP_API_URL;
     const dispatch = useDispatch()
 
-    const { currentPath, value, data } = useSelector((state) => {
-        return {
-            currentPath: state.route.current,
-            value: state.sidebar.value,
-            data: state.sidebar.data
-        }
-    })
+    // const { currentPath, value, data } = useSelector((state) => {
+    //     return {
+    //         currentPath: state.route.current,
+    //         value: state.sidebar.value,
+    //         data: state.sidebar.data
+    //     }
+    // })
+
+    const selectRoute = (state) => state.route.current;
+    const selectSidebarValue = (state) => state.sidebar.value;
+    const selectSidebarData = (state) => state.sidebar.data;
+
+    const selectCombined = createSelector(
+        [selectRoute, selectSidebarValue, selectSidebarData],
+        (currentPath, value, data) => ({
+            currentPath,
+            value,
+            data
+        })
+    );
+
+    const { currentPath, value, data } = useSelector(selectCombined);
 
 
     const [conversationList, setConvsersationList] = useState([])
@@ -38,7 +53,7 @@ const Sidebar = ({ onClose }) => {
 
     useEffect(() => {
         const fetchConversationList = async () => {
-            const res = await fetch(`https://chatgptback-lej9.onrender.com/conversation/conversationlist?page=${page}&limit=12&manuallyAddedConversation=${manuallyAddedConversation}`)
+            const res = await fetch(`${API_URL}/conversation/conversationlist?page=${page}&limit=12&manuallyAddedConversation=${manuallyAddedConversation}`)
             const data = await res.json()
             // console.log(data,'Data of Sidebar received from backend')
             if (data.length === 0) {

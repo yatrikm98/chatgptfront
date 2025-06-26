@@ -7,20 +7,35 @@ import geminiResponse from '../../GeminiApi';
 import { useDispatch, useSelector } from 'react-redux';
 import { navigate, setPauseFalse, setPauseTrue, updateSidebar, dataToSendBackend } from '../../store';
 import createConversation from '../../createConversation';
-
+import { createSelector } from '@reduxjs/toolkit';
 
 const Homepage = ({ openSidebar, onOpen, onClose }) => {
-
+    const API_URL = process.env.REACT_APP_API_URL;
     const dispatch = useDispatch()
 
-    const { currentPath, addPause, sendDataToBackEnd } = useSelector((state) => {
-        return {
-            currentPath: state.route.currentPath,
-            addPause: state.pause.addPause,
-            sendDataToBackEnd: state.backend.sendDataToBackEnd
-        }
-    })
+    // const { currentPath, addPause, sendDataToBackEnd } = useSelector((state) => {
+    //     return {
+    //         currentPath: state.route.currentPath,
+    //         addPause: state.pause.addPause,
+    //         sendDataToBackEnd: state.backend.sendDataToBackEnd
+    //     }
+    // })
 
+    const selectCurrentPath = (state) => state.route.currentPath;
+    const selectAddPause = (state) => state.pause.addPause;
+    const selectSendDataToBackEnd = (state) => state.backend.sendDataToBackEnd;
+
+    const selectCombinedState = createSelector(
+        [selectCurrentPath, selectAddPause, selectSendDataToBackEnd],
+        (currentPath, addPause, sendDataToBackEnd) => ({
+            currentPath,
+            addPause,
+            sendDataToBackEnd
+        })
+    );
+
+
+    const { currentPath, addPause, sendDataToBackEnd } = useSelector(selectCombinedState);
 
 
 
@@ -29,6 +44,7 @@ const Homepage = ({ openSidebar, onOpen, onClose }) => {
     const containerRef = useRef(null);
     const [conversationId, setConversationId] = useState('')
     // console.log(conversationId, 'ConversationId')
+    console.log("Home PAge compoennt re rendered")
 
     const renderedData = messages.map((data, index) => {
         return <MessageListItem data={data} index={index} key={index} messages={messages} />
@@ -49,16 +65,22 @@ const Homepage = ({ openSidebar, onOpen, onClose }) => {
 
     const handleInputSubmit = async (textFromInput) => {
         if (textFromInput !== '') {
+            console.log('Inside if of text input !== "')
             let conversationIdReceivedFromBackEnd;
             dispatch(dataToSendBackend(true))
             if (currentPath === '/') {
+                console.log("Inside current Path === /")
                 const { conversationId } = await createConversation(textFromInput)
                 dispatch(navigate('/' + conversationId))
                 setConversationId(conversationId)
+                setMessages([...messages, { question: textFromInput, answer: '', conversationId }])
+                console.log("Set Messages when gemini response is empty ")
                 conversationIdReceivedFromBackEnd = conversationId
+                console.log("At the end of Inside current Path === /")
             }
             dispatch(setPauseTrue())
-            setMessages([...messages, { question: textFromInput, answer: '', conversationId }])
+
+
             // console.log('Before Response')
             const response = await geminiResponse(textFromInput)
             // console.log(response, 'Response From Gemini')
@@ -80,7 +102,7 @@ const Homepage = ({ openSidebar, onOpen, onClose }) => {
         if (messages.length !== 0 && sendDataToBackEnd && !addPause) {
             const sendResponse = async () => {
                 console.log('Sending data to back end')
-                const res = await fetch('https://chatgptback-lej9.onrender.com/create/message', {
+                const res = await fetch(`${API_URL}/create/message`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -95,7 +117,7 @@ const Homepage = ({ openSidebar, onOpen, onClose }) => {
                 if (messages.length === 1) {
 
                     const fetchConversation = async () => {
-                        const res = await fetch(`https://chatgptback-lej9.onrender.com/conversation/getconversation/${conversationId}`)
+                        const res = await fetch(`${API_URL}/conversation/getconversation/${conversationId}`)
                         const data = await res.json()
                         // console.log(data,'One Conversation when length ===1')
                         dispatch(updateSidebar({
@@ -122,7 +144,7 @@ const Homepage = ({ openSidebar, onOpen, onClose }) => {
             const fetchPageAsPerRoute = async () => {
                 console.log(currentPath, 'Current Path in current pAth UseEffecct')
                 let pathId = currentPath.replace('/', '')
-                const res = await fetch(`https://chatgptback-lej9.onrender.com/conversation/get/${pathId}`)
+                const res = await fetch(`${API_URL}/conversation/get/${pathId}`)
                 const data = await res.json()
                 // console.log(data, 'Data from changed url from back end')
                 if (data.success === false) {

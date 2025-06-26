@@ -1,6 +1,8 @@
+const API_URL = process.env.REACT_APP_API_URL;
+
 const createConversation = async (textFromInput) => {
 
-    const response = await fetch('https://chatgptback-lej9.onrender.com/create/message', {
+    const response = await fetch(`${API_URL}/create/message`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

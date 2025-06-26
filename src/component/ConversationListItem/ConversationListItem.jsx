@@ -10,7 +10,7 @@ const ConversationListItem = ({ data, onRouteChange }) => {
 
     return (
         <div className='datewisedata'>
-            <h3 className='date'><h3>{date}</h3></h3>
+            <strong className='date'><h3>{date}</h3></strong>
                 {items.map((item, innerIndex) => {
                     return (
                         <div
