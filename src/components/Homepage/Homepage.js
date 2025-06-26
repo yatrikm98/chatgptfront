@@ -71,6 +71,7 @@ const Homepage = ({ openSidebar, onOpen, onClose }) => {
             let conversationIdReceivedFromBackEnd;
             dispatch(dataToSendBackend(true))
             setMessages([...messages, { question: textFromInput, answer: '' }])
+            dispatch(setPauseTrue())
             if (currentPath === '/') {
                 console.log("Inside current Path === /")
                 const { conversationId } = await createConversation(textFromInput)
@@ -79,7 +80,7 @@ const Homepage = ({ openSidebar, onOpen, onClose }) => {
                 conversationIdReceivedFromBackEnd = conversationId
                 console.log("At the end of Inside current Path === /")
             }
-            dispatch(setPauseTrue())
+
 
             console.log("Set Messages when gemini response is empty ")
             // console.log('Before Response')
