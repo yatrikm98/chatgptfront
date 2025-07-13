@@ -3,23 +3,19 @@ import Input from '../Input/Input';
 import Navbar from '../Navbar/Navbar';
 import { useState, useRef, useEffect } from 'react';
 import MessageListItem from '../MessageListItem/MessageListItem';
-import geminiResponse from '../../GeminiApi';
+// import geminiResponse from '../../GeminiApi';
 import { useDispatch, useSelector } from 'react-redux';
 import { navigate, setPauseFalse, setPauseTrue, updateSidebar, dataToSendBackend } from '../../store';
 import createConversation from '../../createConversation';
 import { createSelector } from '@reduxjs/toolkit';
+import {
+    GoogleGenAI,
+} from '@google/genai';
 
 const Homepage = ({ openSidebar, onOpen, onClose }) => {
     const API_URL = process.env.REACT_APP_API_URL;
     const dispatch = useDispatch()
 
-    // const { currentPath, addPause, sendDataToBackEnd } = useSelector((state) => {
-    //     return {
-    //         currentPath: state.route.currentPath,
-    //         addPause: state.pause.addPause,
-    //         sendDataToBackEnd: state.backend.sendDataToBackEnd
-    //     }
-    // })
 
     const selectCurrentPath = (state) => state.route.currentPath;
     const selectAddPause = (state) => state.pause.addPause;
@@ -43,6 +39,9 @@ const Homepage = ({ openSidebar, onOpen, onClose }) => {
     const renderDataRef = useRef(null);
     const containerRef = useRef(null);
     const [conversationId, setConversationId] = useState('')
+    const [entireMessageComplete, setEntireMessageComplete] = useState(false)
+
+
     // console.log(conversationId, 'ConversationId')
 
     console.log(messages, "Messages")
@@ -84,24 +83,78 @@ const Homepage = ({ openSidebar, onOpen, onClose }) => {
 
             console.log("Set Messages when gemini response is empty ")
             // console.log('Before Response')
-            const response = await geminiResponse(textFromInput)
+            setEntireMessageComplete(false)
+            async function geminiResponse(text) {
+
+                const ai = new GoogleGenAI({
+                    apiKey: process.env.REACT_APP_GEMINI_API_KEY
+                });
+
+                const config = {
+                    responseMimeType: 'text/plain',
+                };
+
+                const model = 'models/gemini-1.5-flash-latest';
+                const contents = [
+                    {
+                        role: 'user',
+                        parts: [
+                            {
+                                text
+                            },
+                        ],
+                    },
+                ];
+
+                const response = await ai.models.generateContentStream({
+                    model,
+                    config,
+                    contents,
+                });
+
+                let data = ''
+                dispatch(setPauseFalse())
+                for await (const chunk of response) {
+                    // console.log(chunk.text,'Chunk Of Text');
+                    data = data + chunk.text
+                    // onTextSubmit(chunk.text)
+                    setMessages(prev => [
+                        ...prev.slice(0, -1),
+                        {
+                            question: textFromInput,
+                            answer: data,
+                            conversationId: conversationId || conversationIdReceivedFromBackEnd
+                        }
+                    ])
+                }
+                // console.log(data,'Data')
+                // return data
+                data = ""
+            }
+
+
+            await geminiResponse(textFromInput)
+            setEntireMessageComplete(true)
+
             // console.log(response, 'Response From Gemini')
             // console.log(conversationId, 'ConversationId After Pause True')
-            setMessages(prev => [
-                ...prev.slice(0, -1),
-                {
-                    question: textFromInput,
-                    answer: response,
-                    conversationId: conversationId || conversationIdReceivedFromBackEnd
-                }
-            ]);
-            dispatch(setPauseFalse())
+
+
+            // setMessages(prev => [
+            //     ...prev.slice(0, -1),
+            //     {
+            //         question: textFromInput,
+            //         answer: response,
+            //         conversationId: conversationId || conversationIdReceivedFromBackEnd
+            //     }
+            // ]);
+
             console.log('After Response')
         }
     }
 
     useEffect(() => {
-        if (messages.length !== 0 && sendDataToBackEnd && !addPause) {
+        if (messages.length !== 0 && sendDataToBackEnd && !addPause && entireMessageComplete) {
             const sendResponse = async () => {
                 console.log('Sending data to back end')
                 const res = await fetch(`${API_URL}/create/message`, {
@@ -117,7 +170,6 @@ const Homepage = ({ openSidebar, onOpen, onClose }) => {
                     console.log(data.message)
                 }
                 if (messages.length === 1) {
-
                     const fetchConversation = async () => {
                         console.log("Inside fatch conversation")
                         const res = await fetch(`${API_URL}/conversation/getconversation/${conversationId}`)
@@ -134,7 +186,7 @@ const Homepage = ({ openSidebar, onOpen, onClose }) => {
             sendResponse()
         }
         // eslint-disable-next-line
-    }, [messages, sendDataToBackEnd, addPause, dispatch])
+    }, [messages, sendDataToBackEnd, addPause, dispatch, entireMessageComplete])
 
     useEffect(() => {
         if (currentPath === '/') {
